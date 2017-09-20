@@ -1,0 +1,532 @@
+options {
+  Ignore_Casse = true;
+  static = false;
+}
+PARSER_BEGIN(Python)
+
+package javacc;
+import java.util.ArrayList;
+
+public class Python{
+
+ public String ex;
+public static ArrayList<String> tabletokens = new ArrayList();
+	void error(String e){
+            ex = e;
+            System.out.println(ex);
+        }
+
+
+}
+
+PARSER_END(Python)	
+
+TOKEN_MGR_DECLS: {
+}
+
+TOKEN: //Palabras reservadas Python
+{
+     
+        
+        <FALSE:       "False">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<TRUE:       "True">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<NONE:       "None">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+        
+        |<AND:       "and">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<AS:       "as">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<ASSERT:       "assert">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<BREAK:       "break">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<CLASS:       "class">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<CONTINUE:       "continue">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<DEF:       "def">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<DEL:       "del">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<ELIF:       "elif">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<ELSE:       "else">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<EXCEPT:       "except">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+        
+        |<FINALLY:       "finally">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<FOR:       "for">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<FROM:       "from">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<GLOBAL:       "global">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<IF:       "if">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<IMPORT:       "import">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<IN:       "in">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<IS:       "is">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<LAMBDA:       "lambda">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<NONLOCAL:       "nonlocal">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<NOT:       "not">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<OR:       "or">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<PASS:       "pass">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<RAISE:       "raise">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<RETURN:       "return">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<TRY:       "try">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<WHILE:       "while">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<WITH:       "with">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<YIELD:       "yield">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}    
+}
+
+TOKEN: //Palabras reservadas no incluidas Python
+{
+
+
+
+        <RANGE:       "range">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+
+        |<INPUT:       "input">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("Palabra reservada: "+image);}
+        
+        |<PRINT:       "print">{System.out.println("print: "+image);
+        Python.tabletokens.add("palabra reservada: "+image);}
+        
+        |<VERROR:       "error">{System.out.println("error: "+image);
+        Python.tabletokens.add("error: "+image);}
+        
+        |<START:        "Start">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("error: "+image);}
+        
+        |<END:          "End">{System.out.println("Palabra reservada: "+image);
+        Python.tabletokens.add("error: "+image);}
+}
+
+
+TOKEN: //Operadores en Python
+{
+
+        <SUMA:		"+">{System.out.println("Operador suma: "+image);
+	Python.tabletokens.add("Operador Suma: "+image);}
+
+	|<RESTA:	"-">{System.out.println("Operador resta: "+image);
+	Python.tabletokens.add("Operador resta: "+image);}
+
+	|<MULTI:	"*">{System.out.println("Operador multiplicaciÃ³n: "+image);
+	Python.tabletokens.add("Operador multiplicaciÃ³n: "+image);}
+
+	|<POTENCIA:	"**">{System.out.println("Operador potencia: "+image);
+	Python.tabletokens.add("Operador potencia: "+image);}
+
+	|<DIVISION:	"/">{System.out.println("Operador divisiÃ³n: "+image);
+	Python.tabletokens.add("Operador divisiÃ³n: "+image);}
+
+	|<DIVENTERA:	"//">{System.out.println("Operador divisiÃ³n entera: "+image);
+	Python.tabletokens.add("Operador divisiÃ³n entera: "+image);}
+
+	|<MODULO:	"%">{System.out.println("Operador de modulo: "+image);
+	Python.tabletokens.add("Operador de modulo: "+image);}
+
+	|<RECIZQUIERDA:	"<<">{System.out.println("Operador binario de desplazamiento izquierdo: "+image);
+	Python.tabletokens.add("Operador binario de desplazamiento izquierdo: "+image);}
+
+	|<RECDERECHA:	">>">{System.out.println("Operador binario de desplazamiento derecha: "+image);
+	Python.tabletokens.add("Operador binario de desplazamiento derecha: "+image);}
+
+	|<AMPERSON:	"&">{System.out.println("Operador and: "+image);
+	Python.tabletokens.add("Operador binario and logico: "+image);}
+        
+	|<PIPE:	"|">{System.out.println("Operador or: "+image);
+	Python.tabletokens.add("Operador or: "+image);}
+
+	|<CONJUNTO:	"^">{System.out.println("Operador de conjuntos: "+image);
+	Python.tabletokens.add("Operador de conjuntos: "+image);}
+
+	|<OPNOT:	"~">{System.out.println("Operador not: "+image);
+	Python.tabletokens.add("Operador not: "+image);}
+
+	|<MENORQUE:	"<">{System.out.println("Operador menor que: "+image);
+	Python.tabletokens.add("Operador menor que: "+image);}
+
+	|<MAYORQUE:	">">{System.out.println("Operador mayor que: "+image);
+	Python.tabletokens.add("Operador mayor que: "+image);}
+
+	|<MENORIGUAL:	"<=">{System.out.println("Operador menor que con asignaciÃ³n: "+image);
+	Python.tabletokens.add("Operador menor que ocn asignaciÃ³n: "+image);}
+
+	|<MAYORIGUAL:	">=">{System.out.println("Operador mayor que con asignaciÃ³: "+image);
+	Python.tabletokens.add("Operador mayor que con asignaciÃ³n: "+image);}
+
+	|<IGUALIGUAL:	"==">{System.out.println("Operador de comparaciÃ³n: "+image);
+	Python.tabletokens.add("Operador de comparaciÃ³n: "+image);}
+
+	|<NOTNEG:	"!=">{System.out.println("Operador de negaciÃ³n con asignaciÃ³n: "+image);
+	Python.tabletokens.add("Operador de negaciÃ³n con asignaciÃ³n: "+image);}
+
+}
+
+
+
+TOKEN: //Delimitadores en Python
+{
+        
+        <PARENI:       "(">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<PAREND:       ")">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+        
+        |<PUNTO:       ".">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<CORCHI:       "[">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<CORCHD:       "]">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<LLAVEI:       "{">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<LLAVED:       "}">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<COMA:         ",">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<DOSPUNTOS:    ":">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<PUNTOCOMA:     ";">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<IGUAL:         "=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<FLECHITA:      "->">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<MASIGUAL:      "+=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<MENOSIGUAL:    "-=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+        
+        |<DIVIGUAL:      "/=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<MULTIGUAL:     "*=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<DDIGUAL:       "//=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<RESIGUAL:      "%=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<ARROBAIGUAL:   "@=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<AMPIGUAL:      "&=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<ORIGUAL:       "|=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<EXIGUAL:       "^=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<MDMDIGUAL:     ">>=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<MIMIIGUAL:     "<<=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+
+        |<ASASIGUAL:     "**=">{System.out.println("Delimitador: "+image);
+        Python.tabletokens.add("Delimitador: "+image);}
+}
+
+TOKEN: //Delimitadores en Python
+{
+        <PESOS:         "$">{System.out.println("Palabra no aceptada por el lenguaje: "+image);
+        Python.tabletokens.add("Inicio/Final de cadenas de caracteres: "+image);}
+ 
+        |<SIGNOINT:      "?">{System.out.println("Palabra no aceptada por el lenguaje: "+image);
+        Python.tabletokens.add("Inicio/Final de cadenas de caracteres: "+image);}
+        
+        |<ACENTOINV:      "`">{System.out.println("Palabra no aceptada por el lenguaje: "+image);
+        Python.tabletokens.add("Inicio/Final de cadenas de caracteres: "+image);}
+        
+}
+
+TOKEN: //Tipo de datos en Python
+{
+        <ENTERO:           "int">{System.out.println("Tipo de dato entero: "+image);
+        Python.tabletokens.add("Tipo de dato entero: "+image);}
+	|<FLOTANTE:        "float">{System.out.println("Tipo de dato flotante: "+image);
+        Python.tabletokens.add("Tipo de dato flotante: "+image);}
+	|<CADENA:          "str">{System.out.println("Tipo de dato cadena: "+image);
+        Python.tabletokens.add("Tipo de dato cadena: "+image);}
+        |<CARACTER:        "chr">{System.out.println("Tipo de dato caracter: "+image);
+        Python.tabletokens.add("Tipo de dato caracter: "+image);}
+        |<BOLEANO:         "bool">{System.out.println("Tipo de dato boleano: "+image);
+        Python.tabletokens.add("Tipo de dato boleano: "+image);}
+}
+
+
+TOKEN: // Simbolo especiales en Python
+{
+        <COMILLAS:        (["\"","'"])+>{System.out.println("Inicio/final de cadenas de caracteres o comentarios: "+image);
+        Python.tabletokens.add("Inicio/Final de cadenas de caracteres: "+image);}
+
+        |<COMENTARIO:       "#">{System.out.println("Inicio de un comentario: "+image);
+        Python.tabletokens.add("Inicio/Final de cadenas de caracteres: "+image);}
+        
+}
+
+TOKEN: // Simbolo especiales en Python
+{
+        <DIGITOS:         (["0"-"9"])+>{System.out.println("Digitos: "+image+"\r\n");
+        Python.tabletokens.add("Digitos: "+image);}
+
+           // Identificadores
+
+        |<IDENTIFICADOR1:          (["a"-"z","A"-"Z"])+>{System.out.println("Identificadores "+image);
+        Python.tabletokens.add("Identificadores: "+image);}
+
+        |<IDENTIFICADOR2:          (["a"-"z","A"-"Z","0"-"9","_"])+>{System.out.println("Identificadores "+image);
+        Python.tabletokens.add("Identificadores: "+image);}
+}
+
+
+
+SKIP: {
+" " | "\r" | "\b" | "\f" | "\t" | "\n"  
+
+}
+
+
+void Start () : {}
+{
+(
+    <FALSE> |<TRUE> |<NONE> |<AND> |<AS> |<ASSERT> |<BREAK> |<CLASS> |<CONTINUE> 
+    |<DEF> |<DEL> |<ELIF> |<ELSE>|<EXCEPT> |<FINALLY> |<FOR> |<FROM> |<GLOBAL> 
+    |<IF> |<IMPORT> |<IN> |<IS> |<LAMBDA>|<NONLOCAL> |<NOT> |<OR> |<PASS> 
+    |<RAISE> |<RETURN> |<TRY> |<WHILE> |<WITH> |<YIELD>
+
+    |<RANGE> |<INPUT> |<PRINT> |<VERROR> |<START> |<END>
+
+    |<SUMA> |<RESTA> |<MULTI> |<POTENCIA> |<DIVISION> |<DIVENTERA> |<MODULO>
+    |<RECIZQUIERDA> |<RECDERECHA> |<AMPERSON> |<PIPE> |<CONJUNTO> |<OPNOT>
+    |<MENORQUE> |<MAYORQUE> |<MENORIGUAL> |<MAYORIGUAL> |<IGUALIGUAL> |<NOTNEG>
+
+    |<PARENI> |<PAREND> |<PUNTO> |<CORCHI> |<CORCHD> |<LLAVEI> |<LLAVED>
+    |<COMA> |<DOSPUNTOS> |<PUNTOCOMA> |<IGUAL> |<FLECHITA> |<MASIGUAL>
+    |<MENOSIGUAL> |<DIVIGUAL> |<MULTIGUAL> |<DDIGUAL> |<RESIGUAL>
+    |<ARROBAIGUAL> |<AMPIGUAL> |<ORIGUAL> |<EXIGUAL> |<MDMDIGUAL> 
+    |<MIMIIGUAL> |<ASASIGUAL>
+
+    |<PESOS> |<SIGNOINT> |<ACENTOINV>    
+
+    |<ENTERO> |<FLOTANTE> |<CADENA> |<CARACTER> |<BOLEANO>
+
+    |<COMILLAS> |<COMENTARIO> 
+
+    |<DIGITOS> |<IDENTIFICADOR1> |<IDENTIFICADOR2>)*
+
+}
+
+void programa():
+{}
+{
+    <START>principal()<END><EOF>
+}
+
+void principal():
+{}
+{
+    
+    comentario() // ya quedo
+    |calculadora() // ya quedo
+    |fpass()      //ya quedo
+    |LOOKAHEAD(3) leer() //ya quedo
+    |imprimir() // YA QUEDO
+    |romper() // ya quedo
+    |LOOKAHEAD(2) declararvar() //ya quedo
+    |LOOKAHEAD(2) asignacionaumentada() //ya quedo
+    |{
+        return;
+     }
+    
+}
+
+void comentario(): //metodo padre
+{}
+{
+<COMENTARIO><IDENTIFICADOR2><COMENTARIO>
+|<COMILLAS><COMILLAS><COMILLAS><IDENTIFICADOR2><COMILLAS><COMILLAS><COMILLAS>
+}
+
+void calculadora(): //metodo padre
+{}
+{
+<DIGITOS>operadorcalculadora()<DIGITOS>(operadorcalculadora()<DIGITOS>)*<PUNTOCOMA> 
+}
+
+void operadorcalculadora():
+{}
+{
+
+<SUMA>|<RESTA> | <MULTI>|<DIVISION>|<POTENCIA>|<MODULO>
+}
+
+void fpass(): //metodo padre
+{}
+{
+<PASS><PUNTOCOMA>
+}
+
+void imprimir(): //metodo padre
+{}
+{
+<PRINT><PARENI>opcimprimir()<PAREND><PUNTOCOMA>
+} 
+
+void opcimprimir():
+{}
+{
+<COMILLAS>(<IDENTIFICADOR2>|<IDENTIFICADOR1>|<DIGITOS>)<COMILLAS>(<COMA>(<COMILLAS>(<IDENTIFICADOR2>|<IDENTIFICADOR1>|<DIGITOS>)<COMILLAS>)|(<IDENTIFICADOR2>|<IDENTIFICADOR1>|<DIGITOS>)<COMILLAS>)*
+|(<IDENTIFICADOR1>|<IDENTIFICADOR2>|<DIGITOS>)(<COMA>(<COMILLAS>(<IDENTIFICADOR2>|<IDENTIFICADOR1>|<DIGITOS>)<COMILLAS>)|(<IDENTIFICADOR2>|<IDENTIFICADOR1>|<DIGITOS>)<COMILLAS>)*
+
+
+}
+
+void leer(): //metodo padre 
+{}
+{
+
+<IDENTIFICADOR1><IGUAL><INPUT><PARENI> <COMILLAS>opcleer()<COMILLAS><PAREND><PUNTOCOMA>
+}
+
+void opcleer():
+{}
+{
+(<IDENTIFICADOR1>|<DIGITOS>)?
+}
+
+
+void declararvar(): //metodo padre
+{}
+{
+
+(<IDENTIFICADOR1>|<IDENTIFICADOR2>) <IGUAL> (tipodato()|tuplas()|listas()|diccionario()|bool()) <PUNTOCOMA>
+}
+
+void tuplas():
+{}
+{
+<PARENI>tipodato()(<COMA>tipodato())*<PAREND>
+}
+
+void listas():
+{}
+{
+<CORCHI>tipodato()(<COMA>tipodato())*<CORCHD>
+}
+
+void diccionario():
+{}
+{
+<LLAVEI> <COMILLAS><IDENTIFICADOR1><COMILLAS><DOSPUNTOS>tipodato() (<COMA><COMILLAS><IDENTIFICADOR1><COMILLAS><DOSPUNTOS>tipodato())* <LLAVED>
+}
+
+void tipodato():
+{}
+{
+LOOKAHEAD(2)
+<IDENTIFICADOR1>
+|<DIGITOS>(<PUNTO><DIGITOS>)*
+|<COMILLAS><IDENTIFICADOR2><COMILLAS>
+}
+
+void bool(): 
+        {}
+        {
+            <TRUE>
+            |<FALSE>   
+        }
+
+void asignacionaumentada(): //metodo padre
+{}
+{
+(<IDENTIFICADOR1>|<IDENTIFICADOR2>)operasinacionaumen()opcasignacionaumentada()<PUNTOCOMA>
+}
+
+
+void operasinacionaumen():
+{}
+{
+<MASIGUAL> |<MENOSIGUAL> |<DIVIGUAL> |<MULTIGUAL> |<DDIGUAL> |<RESIGUAL>
+}
+
+void opcasignacionaumentada():
+{}
+{
+<IDENTIFICADOR1>
+}
+
+void romper():
+        {}
+        {
+            <BREAK>
+        }
