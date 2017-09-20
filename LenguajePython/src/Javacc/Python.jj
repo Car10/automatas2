@@ -1,3 +1,5 @@
+/* Comentario de inicio */
+
 options {
   Ignore_Casse = true;
   static = false;
