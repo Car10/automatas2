@@ -1927,70 +1927,20 @@ public class Lexico extends javax.swing.JFrame {
 
         //BOTÓN PARA COMPILAR, QUE TENDRÁ VARIAS OPCIONES
         //Opción 1. No se escribe absolutamente nada, se manda un mensaje indicando esto
-        if (area_codigo.getText().equals("")) {
+        if (area_codigo.getText().equals("")) 
             JOptionPane.showMessageDialog(null, "Escribe algo para analizar!");
-        } //Opción 2. Se escribe algo, cualquier cosa, se procede a analizar de dos maneras
-        else if (!area_codigo.getText().equals("")) {
-
-            //El botón compilar preguntará antes de ejecutarse
-            Object[] opciones = {"Sí", "No"};
-            int eleccion = JOptionPane.showOptionDialog(rootPane, "Guardar antes de analizar?", "Mensaje de Confirmacion",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, null, opciones, "Sí");
-
-            //Sí desea guardar antes de compilar
-            if (eleccion == JOptionPane.YES_OPTION) {
-
-                if (this.getTitle().contains(".py")) {
-
-                    sobreescribirg();
-                    System.out.println("Sobreescribir y compilar si ya existe un archivo");
-
-                    c=0;
-                    System.out.println("Contador de autoguardado reiniciado");
-
-                    try {
-                        compilar();
-                    } catch (ParseException ex) {
-                        Logger.getLogger(Python.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                    //Ocurrió un guardado así que se desactiva el 'guardar' hasta que haya cambios
-                    menu_guardar.setEnabled(false);
-
-                    cambios = false;
-
-                }
-
-                else if (!this.getTitle().contains(".py")){
-
-                    guardarArchivo();
-                    System.out.println("Guardar como y compilar");
-
-                    try {
-                        compilar();
-                    } catch (ParseException ex) {
-                        Logger.getLogger(Python.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                }
-
+         
+        else 
+            
+            // No me importa guarda y castra para la pruebas
+            try {
+                System.out.println("Compilando archivo ...");
+                compilar();
+            
+            } catch (ParseException ex) {
+            
+                Logger.getLogger(Python.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            //No se quiere guardar antes de compilar
-            else{
-
-                System.out.println("Compilar sin guardar (análisis rápido)");
-
-                try {
-                    compilar();
-                } catch (ParseException ex) {
-                    Logger.getLogger(Python.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-
-        }
 
     }//GEN-LAST:event_boton_compilarActionPerformed
 
@@ -2124,7 +2074,7 @@ public class Lexico extends javax.swing.JFrame {
            area_salida1.setText("Compilación exitosa");
 
         } catch (ParseException ex) {
-
+            
             //Aquí se manda al area de salida la excepción que atrapa los errores en el análisis
             area_salida1.setText(ex.getMessage());
 
