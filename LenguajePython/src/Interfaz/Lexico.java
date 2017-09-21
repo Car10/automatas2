@@ -1300,11 +1300,7 @@ public class Lexico extends javax.swing.JFrame {
                     c=0;
                     System.out.println("Contador de autoguardado reiniciado");
                     
-                    try {
-                        compilar();
-                    } catch (ParseException ex) {
-                        Logger.getLogger(Python.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    compilar();
 
                     //Ocurrió un guardado así que se desactiva el 'guardar' hasta que haya cambios
                     menu_guardar.setEnabled(false);
@@ -1318,11 +1314,7 @@ public class Lexico extends javax.swing.JFrame {
                     guardarArchivo();
                     System.out.println("Guardar como y compilar");
                     
-                    try {
-                        compilar();
-                    } catch (ParseException ex) {
-                        Logger.getLogger(Python.class.getName()).log(Level.SEVERE, null, ex);
-                    }  
+                    compilar();  
 
                 }      
             
@@ -1334,11 +1326,7 @@ public class Lexico extends javax.swing.JFrame {
             
                 System.out.println("Compilar sin guardar (análisis rápido)");
                 
-                try {
-                        compilar();
-                    } catch (ParseException ex) {
-                        Logger.getLogger(Python.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                compilar();
                 
             }
             
@@ -1930,17 +1918,11 @@ public class Lexico extends javax.swing.JFrame {
         if (area_codigo.getText().equals("")) 
             JOptionPane.showMessageDialog(null, "Escribe algo para analizar!");
          
-        else 
+        else {
             
-            // No me importa guarda y castra para la pruebas
-            try {
-                System.out.println("Compilando archivo ...");
-                compilar();
-            
-            } catch (ParseException ex) {
-            
-                Logger.getLogger(Python.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            System.out.println("Compilando archivo ...");
+            compilar();
+        }
 
     }//GEN-LAST:event_boton_compilarActionPerformed
 
@@ -2034,7 +2016,11 @@ public class Lexico extends javax.swing.JFrame {
 
     }
 
-    public void compilar() throws ParseException {
+    /* Este metodo debera atrapar las excepciones en lugar de lanzarlas */
+    public void compilar(){
+        
+        area_salida1.setText("");
+        
         try {
 
             //Este método es el que realiza el análisis léxico
@@ -2057,7 +2043,6 @@ public class Lexico extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.PLAIN_MESSAGE);
         }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////    
-           area_salida1.setText("");
         
         try {
 
@@ -2069,7 +2054,7 @@ public class Lexico extends javax.swing.JFrame {
             Python.tabletokens.clear();
 
             //Aquí es donde se inicializan los tokens
-            compilador.programa();
+            compilador.principal();
 
            area_salida1.setText("Compilación exitosa");
 

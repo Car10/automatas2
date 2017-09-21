@@ -1465,8 +1465,8 @@ void TokenLexicalActions(Token matchedToken)
       case 42 :
         image.append(jjstrLiteralImages[42]);
         lengthOfMatch = jjstrLiteralImages[42].length();
-                             System.out.println("Operador multiplicaci\u00c3\u0192\u00c2\u00b3n: "+image);
-        Python.tabletokens.add("Operador multiplicaci\u00c3\u0192\u00c2\u00b3n: "+image);
+                             System.out.println("Operador multiplicaci\u00c3\u00b3n: "+image);
+        Python.tabletokens.add("Operador multiplicaci\u00c3\u00b3n: "+image);
          break;
       case 43 :
         image.append(jjstrLiteralImages[43]);
@@ -1477,14 +1477,14 @@ void TokenLexicalActions(Token matchedToken)
       case 44 :
         image.append(jjstrLiteralImages[44]);
         lengthOfMatch = jjstrLiteralImages[44].length();
-                             System.out.println("Operador divisi\u00c3\u0192\u00c2\u00b3n: "+image);
-        Python.tabletokens.add("Operador divisi\u00c3\u0192\u00c2\u00b3n: "+image);
+                             System.out.println("Operador divisi\u00c3\u00b3n: "+image);
+        Python.tabletokens.add("Operador divisi\u00c3\u00b3n: "+image);
          break;
       case 45 :
         image.append(jjstrLiteralImages[45]);
         lengthOfMatch = jjstrLiteralImages[45].length();
-                              System.out.println("Operador divisi\u00c3\u0192\u00c2\u00b3n entera: "+image);
-        Python.tabletokens.add("Operador divisi\u00c3\u0192\u00c2\u00b3n entera: "+image);
+                              System.out.println("Operador divisi\u00c3\u00b3n entera: "+image);
+        Python.tabletokens.add("Operador divisi\u00c3\u00b3n entera: "+image);
          break;
       case 46 :
         image.append(jjstrLiteralImages[46]);
@@ -1543,26 +1543,26 @@ void TokenLexicalActions(Token matchedToken)
       case 55 :
         image.append(jjstrLiteralImages[55]);
         lengthOfMatch = jjstrLiteralImages[55].length();
-                              System.out.println("Operador menor que con asignaci\u00c3\u0192\u00c2\u00b3n: "+image);
-        Python.tabletokens.add("Operador menor que ocn asignaci\u00c3\u0192\u00c2\u00b3n: "+image);
+                              System.out.println("Operador menor que con asignaci\u00c3\u00b3n: "+image);
+        Python.tabletokens.add("Operador menor que ocn asignaci\u00c3\u00b3n: "+image);
          break;
       case 56 :
         image.append(jjstrLiteralImages[56]);
         lengthOfMatch = jjstrLiteralImages[56].length();
-                              System.out.println("Operador mayor que con asignaci\u00c3\u0192\u00c2\u00b3: "+image);
-        Python.tabletokens.add("Operador mayor que con asignaci\u00c3\u0192\u00c2\u00b3n: "+image);
+                              System.out.println("Operador mayor que con asignaci\u00c3\u00b3: "+image);
+        Python.tabletokens.add("Operador mayor que con asignaci\u00c3\u00b3n: "+image);
          break;
       case 57 :
         image.append(jjstrLiteralImages[57]);
         lengthOfMatch = jjstrLiteralImages[57].length();
-                              System.out.println("Operador de comparaci\u00c3\u0192\u00c2\u00b3n: "+image);
-        Python.tabletokens.add("Operador de comparaci\u00c3\u0192\u00c2\u00b3n: "+image);
+                              System.out.println("Operador de comparaci\u00c3\u00b3n: "+image);
+        Python.tabletokens.add("Operador de comparaci\u00c3\u00b3n: "+image);
          break;
       case 58 :
         image.append(jjstrLiteralImages[58]);
         lengthOfMatch = jjstrLiteralImages[58].length();
-                              System.out.println("Operador de negaci\u00c3\u0192\u00c2\u00b3n con asignaci\u00c3\u0192\u00c2\u00b3n: "+image);
-        Python.tabletokens.add("Operador de negaci\u00c3\u0192\u00c2\u00b3n con asignaci\u00c3\u0192\u00c2\u00b3n: "+image);
+                              System.out.println("Operador de negaci\u00c3\u00b3n con asignaci\u00c3\u00b3n: "+image);
+        Python.tabletokens.add("Operador de negaci\u00c3\u00b3n con asignaci\u00c3\u00b3n: "+image);
          break;
       case 59 :
         image.append(jjstrLiteralImages[59]);

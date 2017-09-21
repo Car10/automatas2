@@ -9,14 +9,18 @@ import java.util.ArrayList;
 
 public class Python{
 
- public String ex;
+public String ex;
+
+Token t; //Usado para recorrer los tokens
+
+String peMessage[]; //Mensajes de las exepciones
+
+
 public static ArrayList<String> tabletokens = new ArrayList();
 	void error(String e){
             ex = e;
             System.out.println(ex);
         }
-
-
 }
 
 PARSER_END(Python)	
@@ -219,7 +223,7 @@ TOKEN: //Operadores en Python
 
 TOKEN: //Delimitadores en Python
 {
-        
+
         <PARENI:       "(">{System.out.println("Delimitador: "+image);
         Python.tabletokens.add("Delimitador: "+image);}
 
@@ -398,61 +402,84 @@ void Start () : {}
 
 }
 
-void programa():
-{}
-{
- <START>(LOOKAHEAD(20)principal())+<END><EOF>
-}
 
 void principal():
 {}
 {  
-(comentario() //OK
-|LOOKAHEAD(2)calculadora() // OK
-|imprimir() // OK
-|LOOKAHEAD(3)leer() //OK
-|LOOKAHEAD(10)declararvar() //OK
-|LOOKAHEAD(3)operaciones()//OK
-|LOOKAHEAD(3)asignacionaumentada()//OK
-|conif() //OK
-|conelif()//OK
-|conelse()//OK
-|ciwhile()//OK
-|LOOKAHEAD(4) contador()//OK
-|cifor()
-|fdef()
-|intentar()
-|borrar()
-|fraise()
-|errores()
-|retorno()
-|fyield()
-|flambda()
-|LOOKAHEAD(3)fnone()
-|locales()
-|globales()
-|fassert()
-|finalorcontinue()//OK
-|fpass()//OK
-|romper()//OK
-)
+    
+    try{
+    <START>(    comentario() //OK
+        |   LOOKAHEAD(2)calculadora() // OK
+        |   imprimir() // OK
+        |   LOOKAHEAD(3)leer() //OK
+        |   LOOKAHEAD(10)declararvar() //OK
+        |   LOOKAHEAD(3)operaciones()//OK
+        |   LOOKAHEAD(3)asignacionaumentada()//OK
+        |   conif() //OK
+        |   conelif()//OK
+        |   conelse()//OK
+        |   ciwhile()//OK
+        |   LOOKAHEAD(4) contador()//OK
+        |   cifor()
+        |   fdef()
+        |   intentar()
+        |   borrar()
+        |   fraise()
+        |   errores()
+        |   retorno()
+        |   fyield()
+        |   flambda()
+        |   LOOKAHEAD(3)fnone()
+        |   locales()
+        |   globales()
+        |   fassert()
+        |   finalorcontinue()//OK
+        |   fpass()//OK
+        |   romper()//OK
+    )+<END><EOF> 
+    
+    }catch(ParseException pe){
 
+      /*  do{
+            t = getNextToken();
+
+    
+        } while(t.kind != EOF && t.kind != PUNTOCOMA); */
+
+        throw new ParseException(pe.getMessage());
+    }
 }
 
-void comentario(): //metodo padre
+void comentario() throws ParseException: //metodo padre
 {}
-{
-<COMENTARIO>(<IDENTIFICADOR2>|<DIGITOS>)*<COMENTARIO>
-//|<COMILLAS><COMILLAS><COMILLAS>(<IDENTIFICADOR2>|<DIGITOS>)*<COMILLAS><COMILLAS><COMILLAS>
+{   //Solo se permiten comentarios del tipo #comentario#
+
+    try{  
+
+          <COMENTARIO>(<IDENTIFICADOR2>|<DIGITOS>)*<COMENTARIO>
+
+    }catch(ParseException pe){
+
+        peMessage = pe.getLocalizedMessage().split("\n");
+        System.out.println("Error en comentario:\n" + peMessage[0]);
+        throw new ParseException("Error en comentario:\n" + peMessage[0]);
+    }
 }
-
-
 
 void calculadora(): //metodo padre
 {}
 {
+    try{
 
-(<DIGITOS>)operadorcalculadora()(<DIGITOS>)(operadorcalculadora()(<DIGITOS>))*<PUNTOCOMA> 
+        (<DIGITOS>)operadorcalculadora()(<DIGITOS>)(operadorcalculadora()(<DIGITOS>))*<PUNTOCOMA> 
+        {System.out.println("En calculadora");}
+    
+    }catch(ParseException pe){
+
+        peMessage = pe.getLocalizedMessage().split("\n");
+        System.out.println("Error en la operación matematica:\n" + peMessage[0]);
+        throw new ParseException("Error en la operación matematica:\n" + peMessage[0]);
+    }
 }
 
 
@@ -460,8 +487,7 @@ void calculadora(): //metodo padre
 void operadorcalculadora(): 
 {}
 {
-
-<SUMA>|<RESTA> | <MULTI>|<DIVISION>|<POTENCIA>|<MODULO>
+    <SUMA> |<RESTA> | <MULTI> |<DIVISION> | <POTENCIA> | <MODULO>
 }
 
 
@@ -469,8 +495,18 @@ void operadorcalculadora():
 void imprimir(): //metodo padre
 {}
 {
-<PRINT><PARENI> ( (<IDENTIFICADOR2>) | (<COMILLAS>opcimprimir()<COMILLAS>  (<COMA>opcimprimir2())*) )<PAREND><PUNTOCOMA>
+    try{
+    
+        <PRINT><PARENI> ( (<IDENTIFICADOR2>) | 
+            (<COMILLAS>opcimprimir()<COMILLAS>  (<COMA>opcimprimir2())*) )
+        <PAREND><PUNTOCOMA>
+    
+    } catch(ParseException pe){
 
+        peMessage = pe.getLocalizedMessage().split("\n");
+        System.out.println("Error en instrucción print:\n" + peMessage[0]);
+        throw new ParseException("Error en instrucción print:\n" + peMessage[0]);
+    }
 } 
 
 
@@ -490,9 +526,16 @@ void opcimprimir2():
 void leer(): //metodo padre 
 {}
 {
+    try{
+        <IDENTIFICADOR2><IGUAL><INPUT><PARENI> <COMILLAS>opcleer()<COMILLAS><PAREND><PUNTOCOMA>
+    
+    } catch(ParseException pe){
 
-<IDENTIFICADOR2><IGUAL><INPUT><PARENI> <COMILLAS>opcleer()<COMILLAS><PAREND><PUNTOCOMA>
-}
+        peMessage = pe.getLocalizedMessage().split("\n");
+        System.out.println("Error en instrucción print:\n" + peMessage[0]);
+        throw new ParseException("Error en instrucción input:\n" + peMessage[0]);
+    }
+} 
 
 void opcleer():
 {}
@@ -504,9 +547,15 @@ void opcleer():
 void declararvar(): //metodo padre
 {}
 {
+    try{
+        <IDENTIFICADOR2> <IGUAL>(tipodato()|tuplas()|listas()|diccionario()| bool()) <PUNTOCOMA>
+        
+    } catch(ParseException pe){
 
-<IDENTIFICADOR2> <IGUAL>(tipodato()|tuplas()|listas()|diccionario()| bool()) <PUNTOCOMA>
-
+        peMessage = pe.getLocalizedMessage().split("\n");
+        System.out.println("Error en instrucción print:\n" + peMessage[0]);
+        throw new ParseException("Error al declarar variable:\n" + peMessage[0]);
+    }
 }
 
 void tuplas():
